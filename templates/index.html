@@ -1,0 +1,60 @@
+<html>
+
+	<title>PhoneBuzz!</title>
+
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+	</head>
+
+	<body>
+		<div class="container main">
+			<span class="center">
+				<h3 class="section-title">PhoneBuzz!</h3>
+				<div class="name">A code challenge from LendUp</div>
+				<hr class="hr-gradient" />
+
+				<span class="center">
+						<div class="panel panel-primary option-panel">
+							<div class="panel-heading">
+								<h3 class="panel-title">Call PhoneBuzz</h3>
+							</div>
+							<div class="panel-body">
+								<a href="tel:4248356673" class="btn btn-info">Call <strong>424-835-6673</strong></a>
+							</div>
+						</div>
+						<div class="panel panel-primary option-panel">
+							<div class="panel-heading">
+								<h3 class="panel-title">...Or Have PhoneBuzz Call You</h3>
+							</div>
+							<div class="panel-body">
+								<form id="phonebuzz-call" name="phonebuzz-call">
+									<div class="form-group">
+										<label class="control-label" for="inputNumber">
+											Phone Number
+											<span class="label label-danger">Required Field</span>
+										</label>
+										<br />
+									<div class="input-group">
+										<span class="input-group-addon" id="country-code">+1</span>
+										<input type="tel" name="input-number" class="form-control phone-input" id="inputNumber" aria-describedby="country-code" />
+									</div>
+									<br />
+									<label class="control-label" for="inputDelay">Delay</label>
+									<div class="input-group">
+										<input type="number" min="0" max="3600" name="input-delay" class="form-control input-delay" id="inputDelay" placeholder="0" aria-describedby="seconds-text">
+										<span class="input-group-addon" id="seconds-text">seconds</span>
+									</div>
+									<br />
+									<button type="button" class="btn btn-info call-button" onclick="call()">Call Me</button>
+								</div>
+							</form>
+						</div>
+					</div>
+			</span>
+		</div>
+	</body>
+
+</html>
