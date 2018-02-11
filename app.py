@@ -8,36 +8,48 @@ import time
 
 app = Flask(__name__)
 global base_url
-base_url = "https://will-phonebuzz.herokuapp.com"
+base_url = "https://agile-shore-10893.herokuapp.com"
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
     #return redirect(url_for('voice'))
     return render_template('index.html')
 
-@app.route("/calling", methods=['GET', 'POST'])
-def calling():    
-    data = request.data
+@app.route("/duplicate", methods=['GET', 'POST'])
+def duplicate():
+    #return redirect(url_for('voice'))
+    return render_template('index.html')
 
-    equalsIndex = data.index("=")
-    andIndex = data.index("&")
-    phoneNum = data[equalsIndex+1:andIndex]
-    phoneNum = str(phoneNum)
+@app.route("/calling", methods=['POST'])
+def calling():
+    data = request.args.get('num', '')
+    # data = request.data
+    # data = str(request.data)
+    # data = request.form
+    # data = request.get_data()
+
+    # equalsIndex = data.index("=")
+    # andIndex = data.index("&")
+    # phoneNum = data[equalsIndex+1:andIndex]
+    # phoneNum = "+1" + data
+    # phoneNum = str(phoneNum)
     
-    data = data[andIndex+1:]
-    equalsIndex = data.index("=")
-    delaySecs = data[equalsIndex+1:]
-    delaySecs = int(delaySecs)
-    time.sleep(delaySecs)
+    # data = data[andIndex+1:]
+    # equalsIndex = data.index("=")
+    # delaySecs = data[equalsIndex+1:]
+    # delaySecs = int(delaySecs)
+    # time.sleep(delaySecs)
 
-    fromNum = TWILIO_CALLER_ID
-    account_sid = TWILIO_ACCOUNT_SID
-    auth_token  = TWILIO_AUTH_TOKEN
+    phoneNum = "+18186691671"
+    fromNum = "+14248356673"
+    account_sid = "AC62ddce460d6bddb103150545ff1ca851"
+    auth_token  = "db0a6b71305a1ec16c4aaa189a6e496e"
     client = Client(account_sid, auth_token)
     url = base_url + "/voice"
     
     call = client.calls.create(to=phoneNum, from_=fromNum, url=url)
-    return ("Calling...")
+    # return ("Calling...")
+    return str(data)
 
 @app.route("/voice", methods=['GET', 'POST'])
 def voice():
